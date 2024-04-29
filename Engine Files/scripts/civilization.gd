@@ -34,7 +34,7 @@ func passive_resource_consumption():
 	
 
 func population_growth_decline():
-	self.population -= int(self.population / self.pop_decline_multiplier)
+	self.population -= int((self.population / 100) * self.pop_decline_multiplier)
 	self.population += int(self.population * self.pop_growth_multiplier)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
