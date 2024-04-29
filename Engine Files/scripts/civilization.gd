@@ -35,13 +35,13 @@ func passive_resource_consumption():
 	
 
 func population_growth_decline():
-	self.population -= int((self.population / 100) * self.pop_decline_multiplier)
+	self.population -= int((self.population / 1000) * self.pop_decline_multiplier)
 	self.population += int(self.population * self.pop_growth_multiplier)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# placeholdery, replace with a more efficient way l8er
-	if ((delta * 60) %  1 == 0): # delta relates to frame rate, if the fps is at 60 then delta is 1/60 of a second
+	if (int((delta * 60)) %  1 == 0): # delta relates to frame rate, if the fps is at 60 then delta is 1/60 of a second
 		self.tick+=1
 	
 	if (tick % 2 == 0):
