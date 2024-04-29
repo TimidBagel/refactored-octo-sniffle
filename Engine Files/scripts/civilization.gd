@@ -10,6 +10,8 @@ var building_list = []
 var pop_growth_multiplier
 var pop_decline_multiplier
 
+var tick = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready(init_pop, init_fuel, init_oxygen, init_food, init_water, init_buildings, growth, decline):
 	self.population = init_pop
@@ -32,9 +34,14 @@ func passive_resource_consumption():
 	
 
 func population_growth_decline():
-	self.population -= int(self.population / self.pop_decline_multiplier) # placeholder replace with an actual value to subtract the population by, ideally it will be casted to an integer
+	self.population -= int(self.population / self.pop_decline_multiplier)
 	self.population += int(self.population * self.pop_growth_multiplier)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	# placeholdery, replace with a more efficient way l8er
+	self.tick+=1
+	
+	if (tick % 2 == 0):
+		passive_resource_consumption()
+		population_growth_decline()
