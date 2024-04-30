@@ -11,10 +11,14 @@ var building_list = []
 var pop_growth_multiplier
 var pop_decline_multiplier
 
+var oxygen_decrease_multiplier
+var water_decrease_multiplier
+var food_decrease_multiplier
+
 var tick = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready(init_pop, init_fuel, init_oxygen, init_food, init_water, init_buildings, init_resources, growth, decline):
+# Called when the node enters the scene tree for the first time, init all starting values for a civilization
+func _ready(init_pop, init_fuel, init_oxygen, init_food, init_water, init_buildings, init_resources, init_oxygen_decrease, init_water_decrease, init_food_decrease, growth, decline):
 	self.population = init_pop
 	self.fuel_count = init_fuel
 	self.oxygen_count = init_oxygen
@@ -23,19 +27,23 @@ func _ready(init_pop, init_fuel, init_oxygen, init_food, init_water, init_buildi
 	self.resources = init_resources
 	self.building_list = init_buildings
 	
+	self.oxygen_decrease_multiplier = init_oxygen_decrease
+	self.water_decrease_multiplier = init_water_decrease
+	self.food_decrease_multiplier = init_food_decrease
+	
 	self.pop_growth_multiplier = growth
 	self.pop_decline_multiplier = decline
 	
-	pass # Replace with function body.
+	pass
 
 func passive_resource_consumption():
-	self.oxygen_count -= self.population * 2.2 # eventually replace hardcoded numbers with a variable that can be tweaked
-	self.water_count -= self.population * 2.5 # im thinking that different civilizations will require different needs, an alien species can require less water than humans, just an idea though
-	self.food_count -= self.population * 2
+	self.oxygen_count -= int(self.population * self.oxygen_decrease_multiplier) 
+	self.water_count -= int(self.population * self.water_decrease_multiplier)
+	self.food_count -= int(self.population * self.food_decrease_multiplier)
 	
 
 func population_growth_decline():
-	self.population -= int((self.population / 1000) * self.pop_decline_multiplier)
+	self.population -= int((self.population / (self.population / 10000) * self.pop_decline_multiplier))
 	self.population += int(self.population * self.pop_growth_multiplier)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
