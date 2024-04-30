@@ -36,7 +36,10 @@ func _ready(init_pop, init_fuel, init_oxygen, init_food, init_water, init_buildi
 	
 	pass
 
-func passive_resource_consumption():
+func decrease_resource(amount):
+	self.resources -= int(amount)
+
+func passive_civilization_consumption():
 	self.oxygen_count -= int(self.population * self.oxygen_decrease_multiplier) 
 	self.water_count -= int(self.population * self.water_decrease_multiplier)
 	self.food_count -= int(self.population * self.food_decrease_multiplier)
@@ -53,5 +56,5 @@ func _process(delta):
 		self.tick+=1
 	
 	if (tick % 2 == 0):
-		passive_resource_consumption()
+		passive_civilization_consumption()
 		population_growth_decline()
