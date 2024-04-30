@@ -53,7 +53,7 @@ var time = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	time += delta	
+	time += delta
 	if (time >= 1):
 		passive_civilization_consumption()
 		#population_growth_decline()
