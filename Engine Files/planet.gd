@@ -1,5 +1,6 @@
 extends Node
 
+@export var planetName : String
 var civilizations # list
 @export var breathable_atmosphere : bool
 @export var water_source : bool

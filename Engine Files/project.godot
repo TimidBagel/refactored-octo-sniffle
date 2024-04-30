@@ -13,3 +13,7 @@ config_version=5
 config/name="Colonies"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[filesystem]
+
+import/fbx/enabled=false
