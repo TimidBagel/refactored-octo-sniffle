@@ -20,7 +20,7 @@ func _init(b_name, modi, cost, pop, cap):
 	self.pop_cap = cap
 
 
-func add_to_building(added):
+func assign_to_building(added):
 	cur_pop += added
 	
 	if (cur_pop > pop_cap):
