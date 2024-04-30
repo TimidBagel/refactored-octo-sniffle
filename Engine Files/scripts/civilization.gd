@@ -1,5 +1,6 @@
 class civilization : extends Node
 
+
 var population
 var fuel_count
 var oxygen_count
