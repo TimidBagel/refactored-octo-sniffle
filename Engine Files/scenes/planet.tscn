@@ -4219,9 +4219,10 @@ script = ExtResource("1_035na")
 sprite_frames = SubResource("SpriteFrames_odjcl")
 animation = &"rotate"
 autoplay = "rotate"
-frame_progress = 0.696967
+frame_progress = 0.266041
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

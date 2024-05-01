@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://blg3qvaoghp0l"]
+[gd_scene load_steps=3 format=3 uid="uid://blg3qvaoghp0l"]
 
 [ext_resource type="PackedScene" uid="uid://bkphplfxjboho" path="res://scenes/planet.tscn" id="1_m2djv"]
+[ext_resource type="PackedScene" uid="uid://djxptrs2fchfr" path="res://scenes/Planet UI.tscn" id="2_jtk3i"]
 
 [node name="Sol" type="Node2D"]
 
-[node name="Earth" parent="." instance=ExtResource("1_m2djv")]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="Earth" parent="." instance=ExtResource("1_m2djv")]
+
+[node name="UI" parent="." instance=ExtResource("2_jtk3i")]
