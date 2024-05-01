@@ -7,12 +7,13 @@ extends Node
 @export var resource_harvest_multiplier : float
 @export var temperature : String
 
-@onready var ui_element_name : Label = get_node("Control/ui_test")
+@onready var ui_element_name : ui_elements = get_node("Control/ui_test")
 
-var america = civilization.new(100, 100, 100, 100, 100, [], 100)
+var america = civilization.new("America", 1000, 100, 100, 100, 100, [], 100)
 
 func _ready() -> void:
-	#ui_element_name.size = Vector2(10, 15)
+	ui_element_name.change_civilization(america)
+	print(ui_element_name)
 	add_civilization(america)
 
 func add_civilization(new) -> bool:
@@ -21,5 +22,4 @@ func add_civilization(new) -> bool:
 	return true
 
 func _process(delta):
-	ui_element_name.set_text("Food count: "+str(america.food_count)+"\n"+"Oxygen count: "+str(america.oxygen_count)+"\n"+
-	"Water count: "+str(america.water_count)+"\n")
+	ui_element_name.change_text()

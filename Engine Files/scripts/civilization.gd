@@ -1,7 +1,7 @@
 extends Node
 class_name civilization
 
-
+var civ_name
 var population
 var fuel_count
 var oxygen_count
@@ -22,7 +22,8 @@ var pop_decline_rate
 var tick = 0
 
 # Called when the node enters the scene tree for the first time, init all starting values for a civilization
-func _init(pop, fuel, oxygen, food, water, buildings, res, oxygen_decline = 2.2, water_decline = 2.5, food_decline = 2.0,):
+func _init(c_name, pop, fuel, oxygen, food, water, buildings, res, oxygen_decline = 2.2, water_decline = 2.5, food_decline = 2.0,):
+	self.civ_name = c_name
 	self.population = pop
 	self.fuel_count = fuel
 	self.oxygen_count = oxygen
@@ -54,11 +55,11 @@ var time = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	time += delta	
+	time += delta
 	if (time >= 1):
 		passive_civilization_consumption()
 		#population_growth_decline()
-		print_details()
+		#print_details()
 		time = 0
 		
 func print_details():
