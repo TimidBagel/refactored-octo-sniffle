@@ -1,4 +1,5 @@
-class civilization : extends Node
+extends Node
+class_name civilization
 
 
 var population
@@ -9,31 +10,30 @@ var water_count
 var resources
 var building_list = []
 
-var pop_growth_multiplier
-var pop_decline_multiplier
+# measured in people per day
+var pop_growth_rate
+var pop_decline_rate
 
-var oxygen_decrease_multiplier
-var water_decrease_multiplier
-var food_decrease_multiplier
+# measured in kilograms per day
+@onready var oxygen_decrease_rate = 2.2
+@onready var water_decrease_rate = 2.5
+@onready var food_decrease_rate = 2.0
 
 var tick = 0
 
 # Called when the node enters the scene tree for the first time, init all starting values for a civilization
-func _ready(init_pop, init_fuel, init_oxygen, init_food, init_water, init_buildings, init_resources, init_oxygen_decrease, init_water_decrease, init_food_decrease, growth, decline):
-	self.population = init_pop
-	self.fuel_count = init_fuel
-	self.oxygen_count = init_oxygen
-	self.food_count = init_food
-	self.water_count = init_water
-	self.resources = init_resources
-	self.building_list = init_buildings
+func _init(pop, fuel, oxygen, food, water, buildings, res, oxygen_decline = 2.2, water_decline = 2.5, food_decline = 2.0,):
+	self.population = pop
+	self.fuel_count = fuel
+	self.oxygen_count = oxygen
+	self.food_count = food
+	self.water_count = water
+	self.resources = res
+	self.building_list = buildings
 	
-	self.oxygen_decrease_multiplier = init_oxygen_decrease
-	self.water_decrease_multiplier = init_water_decrease
-	self.food_decrease_multiplier = init_food_decrease
-	
-	self.pop_growth_multiplier = growth
-	self.pop_decline_multiplier = decline
+	self.oxygen_decrease_rate = oxygen_decline
+	self.water_decrease_rate = water_decline
+	self.food_decrease_rate = food_decline
 	
 	pass
 
@@ -41,21 +41,49 @@ func decrease_resource(amount):
 	self.resources -= int(amount)
 
 func passive_civilization_consumption():
-	self.oxygen_count -= int(self.population * self.oxygen_decrease_multiplier) 
-	self.water_count -= int(self.population * self.water_decrease_multiplier)
-	self.food_count -= int(self.population * self.food_decrease_multiplier)
+	self.oxygen_count -= float(self.population * self.oxygen_decrease_rate) 
+	self.water_count -= float(self.population * self.water_decrease_rate)
+	self.food_count -= float(self.population * self.food_decrease_rate)
 	
 
 func population_growth_decline():
 	self.population -= int((self.population / (self.population / 10000) * self.pop_decline_multiplier))
 	self.population += int((self.population / 1000) * self.pop_growth_multiplier)
 
+var time = 0
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# placeholdery, replace with a more efficient way l8er
-	if (int((delta * 60)) %  1 == 0): # delta relates to frame rate, if the fps is at 60 then delta is 1/60 of a second
-		self.tick+=1
-	
-	if (tick % 2 == 0):
+	time += delta	
+	if (time >= 1):
 		passive_civilization_consumption()
-		population_growth_decline()
+		#population_growth_decline()
+		print_details()
+		time = 0
+		
+func print_details():
+	print("population - %d\nfood - %d\nwater - %d\noxygen - %d\nfuel - %d" % [population, food_count, water_count, oxygen_count, fuel_count])
+
+func transfer_people(num, destination):
+	population -= num
+	destination.population += num
+
+func transfer_food(num, destination):
+	food_count -= num
+	destination.food_count += num
+
+func transfer_water(num, destination):
+	water_count -= num
+	destination.water_count += num
+
+func transfer_oxygen(num, destination):
+	oxygen_count -= num
+	destination.oxygen_count += num
+
+func transfer_fuel(num, destination):
+	fuel_count -= num
+	destination.fuel_count += num
+
+func transfer_resource(num, destination):
+	resources -= num
+	destination.resources += num

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmmbukpj5av78"]
+
+[ext_resource type="Script" path="res://planet.gd" id="1_bkq7a"]
+[ext_resource type="PackedScene" uid="uid://ccwesd4utb7rq" path="res://meshes/isosphere_3sub.dae" id="1_nc3rt"]
+
+[node name="planet" type="Node"]
+script = ExtResource("1_bkq7a")
+
+[node name="isosphere_3sub" parent="." instance=ExtResource("1_nc3rt")]

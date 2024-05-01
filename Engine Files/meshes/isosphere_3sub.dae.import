@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://71xx7dt0i301"
-path="res://.godot/imported/isosphere_3sub.glb-dc0652efb7803ad8780830c6389178e8.scn"
+uid="uid://ccwesd4utb7rq"
+path="res://.godot/imported/isosphere_3sub.dae-a1a76ce31898997010df306516cccabd.scn"
 
 [deps]
 
-source_file="res://meshes/isosphere_3sub.glb"
-dest_files=["res://.godot/imported/isosphere_3sub.glb-dc0652efb7803ad8780830c6389178e8.scn"]
+source_file="res://meshes/isosphere_3sub.dae"
+dest_files=["res://.godot/imported/isosphere_3sub.dae-a1a76ce31898997010df306516cccabd.scn"]
 
 [params]
 
