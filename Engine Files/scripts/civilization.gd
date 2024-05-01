@@ -62,3 +62,27 @@ func _process(delta):
 		
 func print_details():
 	print("population - %d\nfood - %d\nwater - %d\noxygen - %d\nfuel - %d" % [population, food_count, water_count, oxygen_count, fuel_count])
+
+func transfer_people(num, destination):
+	population -= num
+	destination.population += num
+
+func transfer_food(num, destination):
+	food_count -= num
+	destination.food_count += num
+
+func transfer_water(num, destination):
+	water_count -= num
+	destination.water_count += num
+
+func transfer_oxygen(num, destination):
+	oxygen_count -= num
+	destination.oxygen_count += num
+
+func transfer_fuel(num, destination):
+	fuel_count -= num
+	destination.fuel_count += num
+
+func transfer_resource(num, destination):
+	resources -= num
+	destination.resources += num
