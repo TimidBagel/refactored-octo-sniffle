@@ -1,7 +1,8 @@
-[gd_scene load_steps=604 format=3 uid="uid://bkphplfxjboho"]
+[gd_scene load_steps=605 format=3 uid="uid://bkphplfxjboho"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_035na"]
 [ext_resource type="Texture2D" uid="uid://5wpd4yhii0hq" path="res://sprites/Earth.png" id="2_3ncqj"]
+[ext_resource type="Script" path="res://scripts/ui_elements.gd" id="3_buoiy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8y07"]
 atlas = ExtResource("2_3ncqj")
@@ -4219,3 +4220,17 @@ sprite_frames = SubResource("SpriteFrames_odjcl")
 animation = &"rotate"
 autoplay = "rotate"
 frame_progress = 0.696967
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ui_test" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 49.0
+offset_right = 143.0
+offset_bottom = 72.0
+script = ExtResource("3_buoiy")
