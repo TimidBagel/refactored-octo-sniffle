@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://w8b3trnjosk5"]
+[gd_scene load_steps=4 format=3 uid="uid://w8b3trnjosk5"]
 
-[ext_resource type="Script" path="res://scripts/planet.gd" id="1_bkq7a"]
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_c5xr6"]
 [ext_resource type="PackedScene" uid="uid://ccwesd4utb7rq" path="res://meshes/isosphere_3sub.dae" id="1_nc3rt"]
+[ext_resource type="Script" path="res://scripts/ui_elements.gd" id="3_bx0m1"]
 
 [node name="planet" type="Node"]
-script = ExtResource("1_bkq7a")
+script = ExtResource("1_c5xr6")
 
 [node name="isosphere_3sub" parent="." instance=ExtResource("1_nc3rt")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ui_test" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 49.0
+offset_right = 143.0
+offset_bottom = 72.0
+script = ExtResource("3_bx0m1")

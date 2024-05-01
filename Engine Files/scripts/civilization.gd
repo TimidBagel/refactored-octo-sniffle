@@ -1,7 +1,7 @@
 extends Node
 class_name civilization
 
-
+var civ_name
 var population
 var fuel_count
 var oxygen_count
@@ -11,8 +11,8 @@ var resources
 var building_list = []
 
 # measured in people per day
-var pop_growth_rate
-var pop_decline_rate
+var pop_growth_rate = 10.2
+var pop_decline_rate = 7.2
 
 # measured in kilograms per day
 @onready var oxygen_decrease_rate = 2.2
@@ -22,7 +22,8 @@ var pop_decline_rate
 var tick = 0
 
 # Called when the node enters the scene tree for the first time, init all starting values for a civilization
-func _init(pop, fuel, oxygen, food, water, buildings, res, oxygen_decline = 2.2, water_decline = 2.5, food_decline = 2.0,):
+func _init(c_name, pop, fuel, oxygen, food, water, buildings, res, oxygen_decline = 2.2, water_decline = 2.5, food_decline = 2.0,):
+	self.civ_name = c_name
 	self.population = pop
 	self.fuel_count = fuel
 	self.oxygen_count = oxygen
@@ -47,8 +48,8 @@ func passive_civilization_consumption():
 	
 
 func population_growth_decline():
-	self.population -= int((self.population / (self.population / 10000) * self.pop_decline_multiplier))
-	self.population += int((self.population / 1000) * self.pop_growth_multiplier)
+	self.population -= int((self.population / ((self.population * 55) /100) * self.pop_decline_rate))
+	self.population += int((self.population / 1000) * self.pop_growth_rate)
 
 var time = 0
 
@@ -57,8 +58,8 @@ func _process(delta):
 	time += delta
 	if (time >= 1):
 		passive_civilization_consumption()
-		#population_growth_decline()
-		print_details()
+		population_growth_decline()
+		#print_details()
 		time = 0
 		
 func print_details():
