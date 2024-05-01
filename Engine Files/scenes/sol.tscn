@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://blg3qvaoghp0l"]
+
+[ext_resource type="PackedScene" uid="uid://bkphplfxjboho" path="res://scenes/planet.tscn" id="1_m2djv"]
+
+[node name="Sol" type="Node2D"]
+
+[node name="Earth" parent="." instance=ExtResource("1_m2djv")]
