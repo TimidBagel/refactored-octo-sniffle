@@ -29,7 +29,10 @@ func assign_to_building(added):
 		
 		# return remainder just in case we may need the value
 		return remainder
+	
+	return 0
 
+# i dont know exactly where we would be calling this but we would ideally call this whenever a buildings pop changes
 func calc_mod_bonus():
 	if (cur_pop > pop_minimum):
 		modifier = modifier + (cur_pop / pop_cap)
