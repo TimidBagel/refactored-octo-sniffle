@@ -11,8 +11,8 @@ var resources
 var building_list = []
 
 # measured in people per day
-var pop_growth_rate = 10.2
-var pop_decline_rate = 7.2
+var pop_growth_rate = 0.7
+var pop_decline_rate = 0.2
 
 # measured in kilograms per day
 @onready var oxygen_decrease_rate = 2.2
@@ -48,8 +48,8 @@ func passive_civilization_consumption():
 	
 
 func population_growth_decline():
-	self.population -= int((self.population / ((self.population * 55) /100) * self.pop_decline_rate))
-	self.population += int((self.population / 1000) * self.pop_growth_rate)
+	self.population -= int((self.population - self.population + ((self.population * 95) / 100) * self.pop_decline_rate) / 1000)
+	self.population += int((self.population + self.population - ((self.population * 90) / 100) * self.pop_growth_rate) / 1000)
 
 var time = 0
 
