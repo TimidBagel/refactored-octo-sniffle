@@ -104,7 +104,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Button" type="Button" parent="Control/ColorRect"]
+[node name="BackButton" type="Button" parent="Control/ColorRect"]
 layout_mode = 0
 offset_left = 1014.0
 offset_top = 8.0
@@ -114,4 +114,15 @@ theme_override_fonts/font = ExtResource("1_52pns")
 theme_override_font_sizes/font_size = 24
 text = "Back"
 
-[connection signal="pressed" from="Control/ColorRect/Button" to="." method="_on_button_pressed"]
+[node name="ColonizeButton" type="Button" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 372.0
+offset_right = 629.0
+offset_bottom = 420.0
+theme_override_fonts/font = ExtResource("1_52pns")
+theme_override_font_sizes/font_size = 24
+text = "Colonize"
+
+[connection signal="pressed" from="Control/ColorRect/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Control/ColorRect/ColonizeButton" to="." method="_on_add_civ_button_pressed"]

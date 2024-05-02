@@ -13,23 +13,21 @@ class_name planet
 @export var total_population : int
 @export var sprite_frames : SpriteFrames
 
-@onready var ui_element_name : ui_elements = get_node("Control/ui_test")
-
-var america = civilization.new("America", 1000, 100, 100, 100, 100, [], 100)
-
-func _ready() -> void:
-	ui_element_name.change_civilization(america)
-	print(ui_element_name)
-	add_civilization(america)
-
 func add_civilization(new) -> bool:
 	civilizations.append(new)
 	add_child(new)
 	return true
 
-func _process(delta):
-	ui_element_name.change_text()
+var timer : float
 
+func _process(delta):	
+	timer += delta
+	if timer >= 1:
+		var count : int
+		for civ in civilizations:
+			count += civ.population
+		total_population = count
+		
 func _on_click_area_input_event(viewport, event, shape_idx):
 	if (event.is_pressed()):
 		print("clicked " + planet_name)
