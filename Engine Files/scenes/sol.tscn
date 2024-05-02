@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://blg3qvaoghp0l"]
+
+[ext_resource type="PackedScene" uid="uid://bkphplfxjboho" path="res://scenes/celestial_bodies/earth.tscn" id="1_m2djv"]
+[ext_resource type="PackedScene" uid="uid://djxptrs2fchfr" path="res://scenes/UI.tscn" id="2_jtk3i"]
+[ext_resource type="PackedScene" uid="uid://cmfy24wkikxyk" path="res://scenes/celestial_bodies/moon.tscn" id="2_r764h"]
+
+[node name="Sol" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Earth" parent="." instance=ExtResource("1_m2djv")]
+
+[node name="Moon" parent="." instance=ExtResource("2_r764h")]
+position = Vector2(-175, 0)
+
+[node name="UI" parent="." instance=ExtResource("2_jtk3i")]
+unique_name_in_owner = true
+visible = false
