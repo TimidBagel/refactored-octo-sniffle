@@ -1,6 +1,11 @@
 extends Node
 class_name civilization
 
+signal population_changed
+signal food_changed
+signal water_changed
+signal oxygen_changed
+
 var civ_name
 var population
 var fuel_count
@@ -9,10 +14,10 @@ var food_count
 var water_count
 var resources
 var building_list = []
+var parent_planet : planet
 
 # measured in people per day
-var pop_growth_rate = 0.7
-var pop_decline_rate = 0.2
+var pop_growth_rate = 0.00000127
 
 # measured in kilograms per day
 @onready var oxygen_decrease_rate = 2.2
@@ -42,14 +47,28 @@ func decrease_resource(amount):
 	self.resources -= int(amount)
 
 func passive_civilization_consumption():
-	self.oxygen_count -= float(self.population * self.oxygen_decrease_rate) 
-	self.water_count -= float(self.population * self.water_decrease_rate)
-	self.food_count -= float(self.population * self.food_decrease_rate)
+	change_oxygen(population * -oxygen_decrease_rate)
+	change_water(population * -water_decrease_rate)
+	change_food(population * -food_decrease_rate)
 	
+func change_oxygen(amt):
+	oxygen_count += amt
+	oxygen_changed.emit()
+	
+func change_water(amt):
+	water_count += amt
+	water_changed.emit()
+	
+func change_food(amt):
+	food_count += amt
+	food_changed.emit()
+	
+func change_population(amt):
+	population += amt
+	population_changed.emit()
 
-func population_growth_decline():
-	self.population -= int((self.population - self.population + ((self.population * 95) / 100) * self.pop_decline_rate) / 1000)
-	self.population += int((self.population + self.population - ((self.population * 90) / 100) * self.pop_growth_rate) / 1000)
+func population_growth():
+	change_population(population * pop_growth_rate)
 
 var time = 0
 
@@ -58,7 +77,7 @@ func _process(delta):
 	time += delta
 	if (time >= 1):
 		passive_civilization_consumption()
-		population_growth_decline()
+		population_growth()
 		#print_details()
 		time = 0
 		
