@@ -129,9 +129,6 @@ offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("4_sajhn")
 
-[connection signal="pressed" from="Control/ColorRect/Button" to="." method="_on_button_pressed"]
-[connection signal="item_activated" from="Control/ColorRect/CivList" to="." method="_on_civ_list_item_activated"]
-
 [node name="ColonizeButton" type="Button" parent="Control/ColorRect"]
 layout_mode = 0
 offset_left = 501.0
@@ -143,4 +140,5 @@ theme_override_font_sizes/font_size = 24
 text = "Colonize"
 
 [connection signal="pressed" from="Control/ColorRect/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_activated" from="Control/ColorRect/CivList" to="." method="_on_civ_list_item_activated"]
 [connection signal="pressed" from="Control/ColorRect/ColonizeButton" to="." method="_on_add_civ_button_pressed"]
