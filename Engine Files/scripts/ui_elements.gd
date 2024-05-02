@@ -23,5 +23,3 @@ func change_text():
 			 "Fuel count: "+str(focused_civilization.fuel_count)+"\n"+
 			 "Resources: "+str(focused_civilization.fuel_count)+"\n")
 
-func _on_civ_list_item_activated(index):
-	pass # Replace with function body.
