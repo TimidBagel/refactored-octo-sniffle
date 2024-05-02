@@ -139,6 +139,16 @@ theme_override_fonts/font = ExtResource("1_52pns")
 theme_override_font_sizes/font_size = 24
 text = "Colonize"
 
+[node name="SendShipToMoon" type="Button" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 434.0
+offset_right = 771.0
+offset_bottom = 466.0
+theme_override_fonts/font = ExtResource("1_52pns")
+theme_override_font_sizes/font_size = 24
+text = "Send ship to moon!"
+
 [connection signal="pressed" from="Control/ColorRect/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="item_activated" from="Control/ColorRect/CivList" to="." method="_on_civ_list_item_activated"]
 [connection signal="pressed" from="Control/ColorRect/ColonizeButton" to="." method="_on_add_civ_button_pressed"]
