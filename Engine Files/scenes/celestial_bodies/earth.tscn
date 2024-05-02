@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkphplfxjboho"]
+[gd_scene load_steps=4 format=3 uid="uid://bkphplfxjboho"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_035na"]
 [ext_resource type="SpriteFrames" uid="uid://bcnclk1m5p2l7" path="res://sprites/sprite_frames/earth.tres" id="2_k17es"]
-[ext_resource type="Script" path="res://scripts/ui_elements.gd" id="3_buoiy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7vay"]
 radius = 51.0098
@@ -20,21 +19,6 @@ sprite_frames = ExtResource("2_k17es")
 sprite_frames = ExtResource("2_k17es")
 animation = &"rotate"
 autoplay = "rotate"
-
-[node name="Control" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ui_test" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 49.0
-offset_right = 143.0
-offset_bottom = 72.0
-script = ExtResource("3_buoiy")
 
 [node name="ClickArea" type="Area2D" parent="."]
 
