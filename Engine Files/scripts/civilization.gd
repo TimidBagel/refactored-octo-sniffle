@@ -1,10 +1,12 @@
 extends Node
-class_name civilization
+class_name Civilization
 
 signal population_changed
 signal food_changed
 signal water_changed
 signal oxygen_changed
+signal res_changed
+signal fuel_changed
 
 var civ_name
 var population
@@ -13,7 +15,7 @@ var oxygen_count
 var food_count
 var water_count
 var resources
-var building_list : Array[building]
+var building_list : Array[Building]
 var parent_planet : Planet
 
 # measured in people per day
@@ -27,7 +29,7 @@ var pop_growth_rate = 0.00000127
 var tick = 0
 
 # Called when the node enters the scene tree for the first time, init all starting values for a civilization
-func _init(c_name, pop, fuel, oxygen, food, water, buildings : Array[building], res, oxygen_decline = 2.2, water_decline = 2.5, food_decline = 2.0,):
+func _init(c_name, pop, fuel, oxygen, food, water, buildings : Array[Building], res, oxygen_decline = 2.2, water_decline = 2.5, food_decline = 2.0,):
 	self.civ_name = c_name
 	self.population = pop
 	self.fuel_count = fuel
@@ -66,6 +68,14 @@ func change_food(amt):
 func change_population(amt):
 	population += amt
 	population_changed.emit()
+
+func change_fuel(amt):
+	fuel_count += amt
+	fuel_changed.emit()
+
+func change_resource(amt):
+	resources += amt
+	res_changed.emit()
 
 func population_growth():
 	change_population(population * pop_growth_rate)

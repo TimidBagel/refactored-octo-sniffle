@@ -1,7 +1,7 @@
 extends Node
-class_name building
+class_name Building
 
-var owns : civilization
+var owns : Civilization
 
 var building_name
 var modifier

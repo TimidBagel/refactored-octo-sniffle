@@ -9,10 +9,17 @@ class_name UI
 @onready var planetimage = $Control/ColorRect/ImageContainer/PlanetImage
 
 @onready var civ_list : ItemList = $Control/ColorRect/CivList
-@onready var civ_info : ui_elements = $Control/ColorRect/ui_elements
 
+@onready var c_name = $Control/ColorRect/CivInfo/CivName
+@onready var c_pop = $Control/ColorRect/CivInfo/CivPop
+@onready var c_food = $Control/ColorRect/CivInfo/CivFood
+@onready var c_water = $Control/ColorRect/CivInfo/CivWater
+@onready var c_oxy = $Control/ColorRect/CivInfo/CivOxy
+@onready var c_fuel = $Control/ColorRect/CivInfo/CivFuel
+@onready var c_resources = $Control/ColorRect/CivInfo/CivResources
 
 var current_planet : Planet
+var current_civilization : Civilization
 
 func set_planet(planet : Planet):
 	current_planet = planet
@@ -29,23 +36,24 @@ func set_planet(planet : Planet):
 	planetimage.sprite_frames = planet.sprite_frames
 	planetimage.play("rotate")
 	
-	civ_info.change_planet(current_planet)
-	
-	for i in civ_info.focused_planet.civilizations:
+	for i in current_planet.civilizations:
 		civ_list.add_item(str(i.civ_name))
 	
 
 func _on_civ_list_item_activated(index):
-	civ_info.change_civilization(current_planet.civilizations[index])
-	civ_info.change_all_text()
+	set_civilization(current_planet.civilizations[index])
+	set_all_text()
  
 func _on_back_button_pressed():
+	if current_civilization != null:
+		reset_all_text()
 	civ_list.clear()
-	civ_info.reset_all_text()
+	current_civilization = null
+	current_planet = null
 	self.visible = false
 
 func _on_add_civ_button_pressed():
-	current_planet.add_civilization(civilization.new(
+	current_planet.add_civilization(Civilization.new(
 		"America",
 		100000,
 		50000,
@@ -55,3 +63,56 @@ func _on_add_civ_button_pressed():
 		[],
 		10000
 	))
+
+func set_pop_text():
+	c_pop.set_text("Population: %.2f" % current_civilization.population)
+
+func set_food_text():
+	c_food.set_text("Food: %.2f" % current_civilization.food_count)
+
+func set_water_text():
+	c_water.set_text("Water: %.2f" % current_civilization.water_count)
+
+func set_oxy_text():
+	c_oxy.set_text("Oxygen: %.2f" % current_civilization.oxygen_count)
+
+func set_fuel_text():
+	c_fuel.set_text("Fuel: %.2f" % current_civilization.fuel_count)
+
+func set_res_text():
+	c_resources.set_text("Resources: %.2f" % current_civilization.resources)
+
+func set_all_text():
+	c_name.set_text(str(current_civilization.civ_name))
+	c_pop.set_text("Population: %.2f" % current_civilization.population)
+	c_food.set_text("Food: %.2f" % current_civilization.food_count)
+	c_water.set_text("Water: %.2f" % current_civilization.water_count)
+	c_oxy.set_text("Oxygen: %.2f" % current_civilization.oxygen_count)
+	c_fuel.set_text("Fuel: %.2f" % current_civilization.fuel_count)
+	c_fuel.set_text("Fuel: %.2f" % current_civilization.fuel_count)
+	c_resources.set_text("Resources: %.2f" % current_civilization.resources)
+	
+func set_civilization(civ):
+	current_civilization = civ
+	current_civilization.population_changed.connect(set_pop_text)
+	current_civilization.oxygen_changed.connect(set_oxy_text)
+	current_civilization.water_changed.connect(set_water_text)
+	current_civilization.food_changed.connect(set_food_text)
+	current_civilization.fuel_changed.connect(set_fuel_text)
+	current_civilization.res_changed.connect(set_res_text)
+
+func reset_all_text():
+	c_name.set_text("")
+	c_pop.set_text("")
+	c_food.set_text("")
+	c_water.set_text("")
+	c_oxy.set_text("")
+	c_fuel.set_text("")
+	c_resources.set_text("")
+	
+	current_civilization.population_changed.disconnect(set_pop_text)
+	current_civilization.oxygen_changed.disconnect(set_oxy_text)
+	current_civilization.water_changed.disconnect(set_water_text)
+	current_civilization.food_changed.disconnect(set_food_text)
+	current_civilization.fuel_changed.disconnect(set_fuel_text)
+	current_civilization.res_changed.disconnect(set_res_text)

@@ -5,7 +5,7 @@ class_name Planet
 @onready var ui = %UI
 
 @export var planet_name : String
-@export var civilizations : Array[civilization] # list
+@export var civilizations : Array[Civilization] # list
 @export var breathable_atmosphere : bool
 @export var water_source : bool
 @export var resource_harvest_multiplier : float
@@ -15,8 +15,8 @@ class_name Planet
 
 #@onready var ui_element_name : ui_elements = get_node("Control/ui_test")
 
-var america = civilization.new("America", 1000, 100, 100, 100, 100, [], 100)
-var hell = civilization.new("Hell", 1000, 100, 100, 100, 100, [], 100)
+var america = Civilization.new("America", 1000, 100, 100, 100, 100, [], 100)
+var hell = Civilization.new("Hell", 1000, 100, 100, 100, 100, [], 100)
 
 func _ready() -> void:
 	#ui_element_name.change_civilization(america)

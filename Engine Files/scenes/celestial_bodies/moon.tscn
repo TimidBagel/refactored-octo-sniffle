@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmfy24wkikxyk"]
+[gd_scene load_steps=4 format=3 uid="uid://cmfy24wkikxyk"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_mki6c"]
 [ext_resource type="SpriteFrames" uid="uid://bnvahnt3k20o" path="res://sprites/sprite_frames/moon.tres" id="2_6alxs"]
-[ext_resource type="Script" path="res://scripts/ui_elements.gd" id="3_xge24"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7vay"]
 radius = 51.0098
@@ -19,21 +18,6 @@ sprite_frames = ExtResource("2_6alxs")
 animation = &"rotate"
 autoplay = "rotate"
 frame_progress = 0.0903533
-
-[node name="Control" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ui_test" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 49.0
-offset_right = 143.0
-offset_bottom = 72.0
-script = ExtResource("3_xge24")
 
 [node name="ClickArea" type="Area2D" parent="."]
 
