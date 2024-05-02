@@ -1,11 +1,15 @@
 extends Label
 class_name ui_elements
 
+var focused_planet : planet
 var focused_civilization : civilization
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+func change_planet(net):
+	focused_planet = net
 
 func change_civilization(civ):
 	focused_civilization = civ
@@ -19,3 +23,5 @@ func change_text():
 			 "Fuel count: "+str(focused_civilization.fuel_count)+"\n"+
 			 "Resources: "+str(focused_civilization.fuel_count)+"\n")
 
+func _on_civ_list_item_activated(index):
+	pass # Replace with function body.

@@ -8,6 +8,10 @@ class_name UI
 @onready var breatheable = $"Control/ColorRect/Breathable?"
 @onready var planet_image = $Control/ColorRect/ImageContainer/PlanetImage
 
+@onready var civ_list : ItemList = $Control/ColorRect/CivList
+@onready var civ_info : ui_elements = $Control/ColorRect/ui_elements
+
+
 var current_planet : planet
 
 func set_planet(planet_ : planet):
@@ -24,8 +28,22 @@ func set_planet(planet_ : planet):
 	breatheable.set_text("Breatheable: " + breathe_bool)
 	planet_image.sprite_frames = planet_.sprite_frames
 	planet_image.play("rotate")
+	
+	civ_info.change_planet(current_planet)
+	
+	for i in current_planet.civilizations:
+		civ_list.add_item(str(i.civ_name))
 
 
+func _on_button_pressed():
+	civ_list.clear()
+	self.visible = false
+
+
+func _on_civ_list_item_activated(index):
+	civ_info.change_civilization(current_planet.civilizations[index])
+	civ_info.change_text()
+ 
 func _on_back_button_pressed():
 	self.visible = false
 
