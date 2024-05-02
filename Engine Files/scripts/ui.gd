@@ -31,7 +31,7 @@ func set_planet(planet_ : planet):
 	
 	civ_info.change_planet(current_planet)
 	
-	for i in current_planet.civilizations:
+	for i in civ_info.focused_planet.civilizations:
 		civ_list.add_item(str(i.civ_name))
 	
 
