@@ -29,9 +29,16 @@ func add_civilization(new) -> bool:
 	add_child(new)
 	return true
 
-#func _process(delta):
-	#ui_element_name.change_text()
+var timer : float
 
+func _process(delta):	
+	timer += delta
+	if timer >= 1:
+		var count : int
+		for civ in civilizations:
+			count += civ.population
+		total_population = count
+		
 func _on_click_area_input_event(viewport, event, shape_idx):
 	if (event.is_pressed()):
 		print("clicked " + planet_name)

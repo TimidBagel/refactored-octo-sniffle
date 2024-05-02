@@ -43,3 +43,18 @@ func _on_button_pressed():
 func _on_civ_list_item_activated(index):
 	civ_info.change_civilization(current_planet.civilizations[index])
 	civ_info.change_text()
+ 
+func _on_back_button_pressed():
+	self.visible = false
+
+func _on_add_civ_button_pressed():
+	current_planet.add_civilization(civilization.new(
+		"America",
+		100000,
+		50000,
+		1000,
+		10000000,
+		10000000,
+		[],
+		10000
+	))
