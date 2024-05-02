@@ -1,7 +1,7 @@
 extends Label
 class_name ui_elements
 
-var focused_planet : planet
+var focused_planet : Planet
 var focused_civilization : civilization
 
 # Called when the node enters the scene tree for the first time.

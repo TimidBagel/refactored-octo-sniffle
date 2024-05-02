@@ -8,7 +8,6 @@
 [node name="Sol" type="Node2D" node_paths=PackedStringArray("planets")]
 script = ExtResource("1_nfosh")
 planets = [NodePath("Earth"), NodePath("Moon")]
-solar_system_name = "Sol"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

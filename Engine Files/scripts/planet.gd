@@ -1,6 +1,6 @@
-extends Node
+extends Node2D
 
-class_name planet
+class_name Planet
 
 @onready var ui = %UI
 

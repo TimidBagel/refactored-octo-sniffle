@@ -14,7 +14,7 @@ var food_count
 var water_count
 var resources
 var building_list = []
-var parent_planet : planet
+var parent_planet : Planet
 
 # measured in people per day
 var pop_growth_rate = 0.00000127
