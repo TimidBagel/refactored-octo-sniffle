@@ -13,7 +13,7 @@ var oxygen_count
 var food_count
 var water_count
 var resources
-var building_list = []
+var building_list : Array[building]
 var parent_planet : Planet
 
 # measured in people per day
@@ -27,7 +27,7 @@ var pop_growth_rate = 0.00000127
 var tick = 0
 
 # Called when the node enters the scene tree for the first time, init all starting values for a civilization
-func _init(c_name, pop, fuel, oxygen, food, water, buildings, res, oxygen_decline = 2.2, water_decline = 2.5, food_decline = 2.0,):
+func _init(c_name, pop, fuel, oxygen, food, water, buildings : Array[building], res, oxygen_decline = 2.2, water_decline = 2.5, food_decline = 2.0,):
 	self.civ_name = c_name
 	self.population = pop
 	self.fuel_count = fuel

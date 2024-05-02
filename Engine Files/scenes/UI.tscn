@@ -139,6 +139,51 @@ theme_override_fonts/font = ExtResource("1_52pns")
 theme_override_font_sizes/font_size = 24
 text = "Colonize"
 
+[node name="CivInfo" type="Control" parent="Control/ColorRect"]
+layout_direction = 1
+anchors_preset = 0
+offset_left = 808.0
+offset_top = 164.0
+offset_right = 1102.0
+offset_bottom = 459.0
+
+[node name="CivName" type="Label" parent="Control/ColorRect/CivInfo"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = -2.0
+offset_right = 117.0
+offset_bottom = 21.0
+
+[node name="CivPop" type="Label" parent="Control/ColorRect/CivInfo"]
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 48.0
+
+[node name="CivFood" type="Label" parent="Control/ColorRect/CivInfo"]
+offset_top = 50.0
+offset_right = 40.0
+offset_bottom = 73.0
+
+[node name="CivWater" type="Label" parent="Control/ColorRect/CivInfo"]
+offset_top = 75.0
+offset_right = 40.0
+offset_bottom = 98.0
+
+[node name="CivOxy" type="Label" parent="Control/ColorRect/CivInfo"]
+offset_top = 100.0
+offset_right = 40.0
+offset_bottom = 123.0
+
+[node name="CivFuel" type="Label" parent="Control/ColorRect/CivInfo"]
+offset_top = 125.0
+offset_right = 40.0
+offset_bottom = 148.0
+
+[node name="CivResources" type="Label" parent="Control/ColorRect/CivInfo"]
+offset_top = 150.0
+offset_right = 40.0
+offset_bottom = 173.0
+
 [connection signal="pressed" from="Control/ColorRect/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="item_activated" from="Control/ColorRect/CivList" to="." method="_on_civ_list_item_activated"]
 [connection signal="pressed" from="Control/ColorRect/ColonizeButton" to="." method="_on_add_civ_button_pressed"]

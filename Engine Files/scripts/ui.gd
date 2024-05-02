@@ -37,10 +37,11 @@ func set_planet(planet : Planet):
 
 func _on_civ_list_item_activated(index):
 	civ_info.change_civilization(current_planet.civilizations[index])
-	civ_info.change_text()
+	civ_info.change_all_text()
  
 func _on_back_button_pressed():
 	civ_list.clear()
+	civ_info.reset_all_text()
 	self.visible = false
 
 func _on_add_civ_button_pressed():
