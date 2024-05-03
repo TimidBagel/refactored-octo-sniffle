@@ -52,8 +52,8 @@ func update_total_population():
 	total_population = count
 
 # called when the planet's collider is clicked
-func _on_click_area_input_event(viewport, event, shape_idx):
-	if (event.is_pressed()):
+func _on_click_area_input_event(viewport: Viewport, event: InputEvent, shape_idx):
+	if (event.is_pressed() && event.is_action("mouse_left")):
 		print("clicked " + planet_name)
 		ui.set_planet(self)
 		ui.visible = true
