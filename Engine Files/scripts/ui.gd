@@ -93,6 +93,8 @@ func set_all_text():
 	c_resources.set_text("Resources: %.2f" % current_civilization.resources)
 	
 func set_civilization(civ):
+	if current_civilization && current_civilization.is_connected("food_changed", set_food_text):
+		disconnect_all_signals()
 	current_civilization = civ
 	current_civilization.population_changed.connect(set_pop_text)
 	current_civilization.oxygen_changed.connect(set_oxy_text)
@@ -110,6 +112,9 @@ func reset_all_text():
 	c_fuel.set_text("")
 	c_resources.set_text("")
 	
+	disconnect_all_signals()
+	
+func disconnect_all_signals():
 	current_civilization.population_changed.disconnect(set_pop_text)
 	current_civilization.oxygen_changed.disconnect(set_oxy_text)
 	current_civilization.water_changed.disconnect(set_water_text)
