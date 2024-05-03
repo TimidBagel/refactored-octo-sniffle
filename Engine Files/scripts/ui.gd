@@ -1,6 +1,5 @@
-extends CanvasLayer
-
-class_name UI
+# Class which contains the logic and elements of the User Interface
+class_name UI extends CanvasLayer
 
 @onready var planet_name = $Control/ColorRect/Name
 @onready var population_count = $Control/ColorRect/PopulationCount
@@ -54,6 +53,7 @@ func _on_back_button_pressed():
 
 func _on_add_civ_button_pressed():
 	current_planet.add_civilization(Civilization.new(
+		current_planet,
 		"America",
 		100000,
 		50000,
