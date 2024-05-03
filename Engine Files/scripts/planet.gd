@@ -38,6 +38,7 @@ func add_civilization(new) -> bool:
 func remove_civilization(to_remove) -> bool:
 	if to_remove in civilizations:
 		civilizations.erase(to_remove)
+		to_remove.population_changed.disconnect(update_total_population)
 		return true
 	else:
 		printerr(to_remove.civ_name + " not found in civilization list")
