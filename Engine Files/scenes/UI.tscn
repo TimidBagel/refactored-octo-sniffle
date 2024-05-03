@@ -30,65 +30,58 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -51.0
-offset_top = 30.0
+offset_top = 10.0
 offset_right = 51.0
-offset_bottom = 54.0
+offset_bottom = 34.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_52pns")
 theme_override_font_sizes/font_size = 24
 text = "Earth"
-metadata/_edit_use_anchors_ = true
+horizontal_alignment = 1
 
-[node name="PopulationCount" type="Label" parent="Control/ColorRect"]
+[node name="PlanetInfoContainer" type="VBoxContainer" parent="Control/ColorRect"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -156.0
-offset_top = 180.0
-offset_right = 194.0
-offset_bottom = 204.0
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -109.0
+offset_right = 175.0
+offset_bottom = -9.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="PopulationCount" type="Label" parent="Control/ColorRect/PlanetInfoContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_52pns")
 theme_override_font_sizes/font_size = 24
 text = "Population: 875B"
 
-[node name="WaterSource?" type="Label" parent="Control/ColorRect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -156.0
-offset_top = 240.0
-offset_right = 194.0
-offset_bottom = 264.0
-grow_horizontal = 2
+[node name="WaterSource?" type="Label" parent="Control/ColorRect/PlanetInfoContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_52pns")
 theme_override_font_sizes/font_size = 24
 text = "Water Source: YES"
 
-[node name="Breathable?" type="Label" parent="Control/ColorRect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -156.0
-offset_top = 300.0
-offset_right = 194.0
-offset_bottom = 324.0
-grow_horizontal = 2
+[node name="Breathable?" type="Label" parent="Control/ColorRect/PlanetInfoContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_52pns")
 theme_override_font_sizes/font_size = 24
 text = "Breatheable: YES"
 
-[node name="ImageContainer" type="Container" parent="Control/ColorRect"]
+[node name="PlanetImageContainer" type="Control" parent="Control/ColorRect"]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_right = 200.0
 grow_vertical = 2
 
-[node name="PlanetImage" type="AnimatedSprite2D" parent="Control/ColorRect/ImageContainer"]
-position = Vector2(200, 325)
+[node name="PlanetImage" type="AnimatedSprite2D" parent="Control/ColorRect/PlanetImageContainer"]
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("3_mkyh5")
 animation = &"rotate"
@@ -122,73 +115,105 @@ offset_right = 800.0
 offset_bottom = 612.0
 allow_search = false
 
+[node name="CivInfoBox" type="Control" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -292.0
+offset_top = -85.0
+offset_right = -37.0
+offset_bottom = 119.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/ColorRect/CivInfoBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0941176, 0.0941176, 0.129412, 1)
+
+[node name="CivInfo" type="VBoxContainer" parent="Control/ColorRect/CivInfoBox"]
+layout_mode = 0
+offset_right = 255.0
+offset_bottom = 206.0
+theme_override_constants/separation = 10
+
+[node name="CivName" type="Label" parent="Control/ColorRect/CivInfoBox/CivInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_52pns")
+theme_override_font_sizes/font_size = 16
+text = "America"
+horizontal_alignment = 1
+
+[node name="CivPop" type="Label" parent="Control/ColorRect/CivInfoBox/CivInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_52pns")
+theme_override_font_sizes/font_size = 16
+text = "Population: -100M"
+horizontal_alignment = 1
+
+[node name="CivFood" type="Label" parent="Control/ColorRect/CivInfoBox/CivInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_52pns")
+theme_override_font_sizes/font_size = 16
+text = "Food: -100M kg"
+horizontal_alignment = 1
+
+[node name="CivWater" type="Label" parent="Control/ColorRect/CivInfoBox/CivInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_52pns")
+theme_override_font_sizes/font_size = 16
+text = "Water: -100M kg"
+horizontal_alignment = 1
+
+[node name="CivOxy" type="Label" parent="Control/ColorRect/CivInfoBox/CivInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_52pns")
+theme_override_font_sizes/font_size = 16
+text = "Oxygen: -100M kg"
+horizontal_alignment = 1
+
+[node name="CivFuel" type="Label" parent="Control/ColorRect/CivInfoBox/CivInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_52pns")
+theme_override_font_sizes/font_size = 16
+text = "Fuel: -100M kg"
+horizontal_alignment = 1
+
+[node name="CivResources" type="Label" parent="Control/ColorRect/CivInfoBox/CivInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_52pns")
+theme_override_font_sizes/font_size = 16
+text = "Resources: -100M kg"
+horizontal_alignment = 1
+
+[node name="AdvancedButton" type="Button" parent="Control/ColorRect/CivInfoBox/CivInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_52pns")
+text = "Advanced"
+
 [node name="ColonizeButton" type="Button" parent="Control/ColorRect"]
 layout_mode = 0
-offset_left = 501.0
-offset_top = 372.0
-offset_right = 629.0
-offset_bottom = 420.0
+offset_left = 112.0
+offset_top = 501.0
+offset_right = 276.0
+offset_bottom = 549.0
 theme_override_fonts/font = ExtResource("1_52pns")
 theme_override_font_sizes/font_size = 24
 text = "Colonize"
 
-[node name="CivInfo" type="Control" parent="Control/ColorRect"]
-layout_direction = 1
-anchors_preset = 0
-offset_left = 808.0
-offset_top = 164.0
-offset_right = 1102.0
-offset_bottom = 459.0
-
-[node name="CivName" type="Label" parent="Control/ColorRect/CivInfo"]
-layout_mode = 0
-offset_left = 77.0
-offset_top = -2.0
-offset_right = 117.0
-offset_bottom = 21.0
-
-[node name="CivPop" type="Label" parent="Control/ColorRect/CivInfo"]
-layout_mode = 0
-offset_top = 25.0
-offset_right = 40.0
-offset_bottom = 48.0
-
-[node name="CivFood" type="Label" parent="Control/ColorRect/CivInfo"]
-layout_mode = 0
-offset_top = 50.0
-offset_right = 40.0
-offset_bottom = 73.0
-
-[node name="CivWater" type="Label" parent="Control/ColorRect/CivInfo"]
-layout_mode = 0
-offset_top = 75.0
-offset_right = 40.0
-offset_bottom = 98.0
-
-[node name="CivOxy" type="Label" parent="Control/ColorRect/CivInfo"]
-layout_mode = 0
-offset_top = 100.0
-offset_right = 40.0
-offset_bottom = 123.0
-
-[node name="CivFuel" type="Label" parent="Control/ColorRect/CivInfo"]
-layout_mode = 0
-offset_top = 125.0
-offset_right = 40.0
-offset_bottom = 148.0
-
-[node name="CivResources" type="Label" parent="Control/ColorRect/CivInfo"]
-layout_mode = 0
-offset_top = 150.0
-offset_right = 40.0
-offset_bottom = 173.0
-
 [node name="SendShipToMoon" type="Button" parent="Control/ColorRect"]
 layout_mode = 0
-offset_left = 421.0
-offset_top = 434.0
-offset_right = 771.0
-offset_bottom = 466.0
+offset_left = 32.0
+offset_top = 563.0
+offset_right = 382.0
+offset_bottom = 595.0
 theme_override_fonts/font = ExtResource("1_52pns")
 theme_override_font_sizes/font_size = 24
 text = "Send ship to moon!"
