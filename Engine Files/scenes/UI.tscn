@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://djxptrs2fchfr"]
 
-[ext_resource type="FontFile" uid="uid://ntranv0outer" path="res://fonts/PixelOperator8.ttf" id="1_52pns"]
+[ext_resource type="FontFile" uid="uid://dv0kujksq88d5" path="res://fonts/PixelOperator8.ttf" id="1_52pns"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_apgcp"]
 [ext_resource type="SpriteFrames" uid="uid://bcnclk1m5p2l7" path="res://sprites/sprite_frames/earth.tres" id="3_mkyh5"]
 
